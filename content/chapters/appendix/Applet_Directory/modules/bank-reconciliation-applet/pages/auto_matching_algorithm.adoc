@@ -1,3 +1,15 @@
 [#h3_bank_recon_auto_matching_algorithm]
 == Auto Matching Algorithm
 
+Expectation-Maximization (EM) algorithm will be used in tuning the weightage parameters to calculate the similarity score. Here is the formula for the score:
+
+Score = S(Amount)weightage1 + S(Date)weightage2 + S(ApprovalCode)weightage3 + S(Description)weightage4
+
+As previously, the weightage parameters are adjusted by the developers or the clients themself. The EM algorithm using the observed data from a dataset available to estimate the missing data. Then, it will used the data that have been estimated to update the values of the parameters.
+
+Steps:
+1. Get the data of the weightage parameters from previous model which have been adjusted manually by the developers or the clients.
+2. Expectation step - use that data to estimate and guess the value of the missing data which is the weightage parameters of the score formula.
+3. Maximization step - Use the complete data generated from the Expectation step to update the values of the weightage parameters.
+4. Check whether the values are converging or not. If yes, stop the process. Otherwise, repeat step 2 and step 3 until the convergence occur.
+
